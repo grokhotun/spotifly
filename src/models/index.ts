@@ -1,1 +1,1 @@
-export { trackModel } from './track';
+export { Track } from './track';

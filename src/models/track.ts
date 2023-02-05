@@ -1,23 +1,14 @@
-const tracks = [{ id: 1, name: 'Небо поможет нам', artist: 'Макс Корж' }];
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-class Track {
-  get(id: number) {
-    return tracks[0];
-  }
-  getAll() {
-    return tracks;
-  }
-  create() {
-    return tracks[0];
-  }
-  update() {
-    return tracks[0];
-  }
-  delete() {
-    return tracks[0];
-  }
+@Entity('tracks')
+export class Track {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({
+    type: 'varchar',
+    unique: false,
+    nullable: false,
+  })
+  name: string;
 }
-
-const trackModel = new Track();
-
-export { trackModel };

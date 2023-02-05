@@ -1,13 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { trackModel } from '@models/track';
 import { CreateTrackDTO, trackService } from '@services/track';
 import { Request, Response } from 'express';
 
 class TrackController {
   async get(request: Request, response: Response) {
     try {
-      const track = trackModel.get(1);
+      const track = trackService.get(1);
       response.json(track);
     } catch (error) {
       response.status(500).json(error);
