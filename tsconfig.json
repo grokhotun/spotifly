@@ -9,15 +9,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@services/*": ["./src/services/*"],
-      "@models/*": ["./src/models/*"],
-      "@config/*": ["./src/config/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@controllers/*": ["./backend/controllers/*"],
+      "@routes/*": ["./backend/routes/*"],
+      "@services/*": ["./backend/services/*"],
+      "@models/*": ["./backend/models/*"],
+      "@config/*": ["./backend/config/*"],
+      "@utils/*": ["./backend/utils/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["backend/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }

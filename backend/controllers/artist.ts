@@ -1,7 +1,7 @@
 import { artistService } from '@services/artist/artist';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { listResponse } from 'src/utils/listResponse';
+import { listResponse } from '@utils/listResponse';
 
 class ArtistController {
   async get(request: Request, response: Response) {
