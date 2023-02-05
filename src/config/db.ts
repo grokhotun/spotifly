@@ -8,6 +8,7 @@ const PostgresDataSource = new DataSource({
   username: 'postgres',
   password: 'postgres',
   database: 'spotifly',
+  logging: true,
   entities: ['src/models/**/*.ts'],
   migrations: ['src/migrations/**/*.ts'],
 });

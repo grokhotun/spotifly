@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+
+import { Comment } from './comment';
 
 @Entity('tracks')
 export class Track {
@@ -11,4 +13,7 @@ export class Track {
     nullable: false,
   })
   name: string;
+
+  @OneToMany(() => Comment, (comment) => comment.track)
+  comments: Comment[];
 }

@@ -1,5 +1,5 @@
 import express from 'express';
-import { tracksRouter, usersRoutes } from '@routes/index';
+import { tracksRouter, usersRoutes, artistsRouter } from '@routes/index';
 import { PostgresDataSource } from '@config/db';
 
 PostgresDataSource.initialize()
@@ -11,8 +11,7 @@ PostgresDataSource.initialize()
     const app = express();
 
     app.use(express.json());
-    app.use(tracksRouter);
-    app.use(usersRoutes);
+    app.use([tracksRouter, usersRoutes, artistsRouter]);
 
     app.listen(PORT, () => {
       console.log(`The server has been started on port ${PORT}`);
