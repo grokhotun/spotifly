@@ -3,7 +3,6 @@ import { Request, Response } from 'express';
 
 import { CreateTrackDTO, trackService } from '@services/track';
 import { listResponse } from '@utils/listResponse';
-import { fileService } from '@services/file';
 
 class TrackController {
   async get(request: Request<{ id: string }>, response: Response) {
@@ -12,7 +11,7 @@ class TrackController {
       const track = await trackService.get(id);
 
       if (!track) {
-        return response.status(StatusCodes.NOT_FOUND).json({
+        return response.sendStatus(StatusCodes.NOT_FOUND).json({
           code: StatusCodes.NOT_FOUND,
           message: `Track with ${id} not found`,
         });

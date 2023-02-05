@@ -25,7 +25,9 @@ class ArtistController {
   async create(request: Request, response: Response) {
     try {
       if (!request.body.name) {
-        return response.status(StatusCodes.BAD_REQUEST).json();
+        return response.sendStatus(StatusCodes.BAD_REQUEST).json({
+          message: 'Field "name" is required',
+        });
       }
 
       const createdArtist = await artistService.create(request.body);
