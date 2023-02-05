@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Spotify clone",
   "main": "index.ts",
-  "author": "Askar Yalyaev .",
+  "author": "Askar Yalyaev <askarrussia@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
