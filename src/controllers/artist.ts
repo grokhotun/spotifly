@@ -1,4 +1,4 @@
-import { artistService } from '@services/artist';
+import { artistService } from '@services/artist/artist';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { listResponse } from 'src/utils/listResponse';
@@ -9,7 +9,7 @@ class ArtistController {
       const artist = await artistService.get(Number(request.params.id));
       return response.json(artist);
     } catch (error) {
-      return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
+      return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -18,7 +18,7 @@ class ArtistController {
       const artist = await artistService.getAll();
       return response.json(listResponse(artist));
     } catch (error) {
-      return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
+      return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
   async create(request: Request, response: Response) {
@@ -31,14 +31,28 @@ class ArtistController {
 
       return response.json(createdArtist);
     } catch (error) {
-      return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
+      return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
-  update(request: Request, response: Response) {
-    return response.send('<h1>Updated Artist</h1>');
+  async update(request: Request, response: Response) {
+    try {
+      const id = Number(request.params.id);
+      const body = request.body;
+
+      const updatedArtist = await artistService.update(id, body);
+      return response.json(updatedArtist);
+    } catch (error) {
+      return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    }
   }
-  delete(request: Request, response: Response) {
-    return response.send('<h1>Delete Artist</h1>');
+  async delete(request: Request, response: Response) {
+    try {
+      const id = Number(request.params.id);
+      await artistService.delete(id);
+      return response.sendStatus(StatusCodes.OK);
+    } catch (error) {
+      return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    }
   }
 }
 

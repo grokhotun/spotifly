@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+
+import { Track } from './track';
 
 @Entity({ name: 'artists' })
 export class Artist {
@@ -11,4 +13,7 @@ export class Artist {
     nullable: false,
   })
   name: string;
+
+  @OneToMany(() => Track, (track) => track.artist)
+  tracks: Track[];
 }
