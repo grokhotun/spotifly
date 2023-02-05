@@ -21,6 +21,7 @@ class ArtistController {
       return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
+
   async create(request: Request, response: Response) {
     try {
       if (!request.body.name) {
@@ -34,6 +35,7 @@ class ArtistController {
       return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
+
   async update(request: Request, response: Response) {
     try {
       const id = Number(request.params.id);
@@ -45,6 +47,7 @@ class ArtistController {
       return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   }
+
   async delete(request: Request, response: Response) {
     try {
       const id = Number(request.params.id);

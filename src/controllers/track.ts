@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 
 import { CreateTrackDTO, trackService } from '@services/track';
 import { listResponse } from '@utils/listResponse';
+import { fileService } from '@services/file';
 
 class TrackController {
   async get(request: Request<{ id: string }>, response: Response) {
@@ -22,6 +23,7 @@ class TrackController {
       return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
     }
   }
+
   async getAll(_: Request, response: Response) {
     try {
       const tracks = await trackService.getAll();
@@ -30,12 +32,25 @@ class TrackController {
       return response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
     }
   }
+
   async create(
     request: Request<void, void, CreateTrackDTO>,
     response: Response,
   ) {
     try {
-      const createdTrack = await trackService.create(request.body);
+      const audio = request.files.audio;
+
+      if (!audio || Array.isArray(audio)) {
+        return response.sendStatus(StatusCodes.BAD_REQUEST).json({
+          message: 'Audio has not been uploaded',
+        });
+      }
+
+      const createdTrack = await trackService.create({
+        ...request.body,
+        audio,
+      });
+
       return response.json(createdTrack);
     } catch (error) {
       response.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR).json(error);

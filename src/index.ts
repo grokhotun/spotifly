@@ -1,4 +1,6 @@
 import express from 'express';
+import fileUpload from 'express-fileupload';
+
 import { tracksRouter, usersRoutes, artistsRouter } from '@routes/index';
 import { PostgresDataSource } from '@config/db';
 
@@ -11,6 +13,8 @@ PostgresDataSource.initialize()
     const app = express();
 
     app.use(express.json());
+    app.use(express.static('static'));
+    app.use(fileUpload());
     app.use([tracksRouter, usersRoutes, artistsRouter]);
 
     app.listen(PORT, () => {

@@ -1,8 +1,10 @@
 import { Track as TrackModel } from '@models/index';
-import { PostgresDataSource } from '@config/db';
 
-import { BaseService } from '../service';
-import { artistService } from '../artist/artist';
+import { PostgresDataSource } from '@config/db';
+import { fileService } from '@services/file';
+import { BaseService } from '@services/service';
+import { artistService } from '@services/artist';
+
 import { CreateTrackDTO, TrackDTO, UpdateTrackDTO } from './types';
 
 class Track extends BaseService<TrackModel> {
@@ -27,9 +29,13 @@ class Track extends BaseService<TrackModel> {
   public async create(dto: CreateTrackDTO) {
     try {
       const artist = await artistService.get(dto.artist);
+      const fileName = await fileService.save(dto.audio);
       const track = new TrackModel();
+
       track.artist = artist;
       track.name = dto.name;
+      track.audio = fileName;
+
       const createdTrack = await this.repository.save(track);
       return createdTrack;
     } catch (error) {

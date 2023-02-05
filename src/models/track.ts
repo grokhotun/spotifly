@@ -21,9 +21,36 @@ export class Track {
   })
   name: string;
 
-  @OneToMany(() => Comment, (comment) => comment.track)
-  comments: Comment[];
-
   @ManyToOne(() => Artist, (artist) => artist.tracks, { nullable: false })
   artist: Artist;
+
+  @Column({
+    type: 'varchar',
+    unique: false,
+    nullable: true,
+  })
+  text: string;
+
+  @Column({
+    type: 'int',
+    default: 0,
+  })
+  listens: number;
+
+  @Column({
+    type: 'varchar',
+    unique: false,
+    nullable: true,
+  })
+  picture: string;
+
+  @Column({
+    type: 'varchar',
+    unique: true,
+    nullable: false,
+  })
+  audio: string;
+
+  @OneToMany(() => Comment, (comment) => comment.track)
+  comments: Comment[];
 }
