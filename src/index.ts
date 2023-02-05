@@ -4,6 +4,7 @@ import { tracksRouter, usersRoutes } from '@routes/index';
 const PORT = 5080;
 const app = express();
 
+app.use(express.json());
 app.use(tracksRouter);
 app.use(usersRoutes);
 

@@ -1,4 +1,7 @@
+import { StatusCodes } from 'http-status-codes';
+
 import { trackModel } from '@models/track';
+import { CreateTrackDTO, trackService } from '@services/track';
 import { Request, Response } from 'express';
 
 class TrackController {
@@ -9,13 +12,20 @@ class TrackController {
     } catch (error) {
       response.status(500).json(error);
     }
-    return response.send('<h1>Track</h1>');
   }
   getAll(request: Request, response: Response) {
     return response.send('<h1>All track</h1>');
   }
-  create(request: Request, response: Response) {
-    return response.send('<h1>Create track</h1>');
+  async create(
+    request: Request<void, void, CreateTrackDTO>,
+    response: Response,
+  ) {
+    try {
+      const createdTrack = trackService.create(request.body);
+      return response.json(createdTrack);
+    } catch (error) {
+      response.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+    }
   }
   update(request: Request, response: Response) {
     return response.send('<h1>Updated track</h1>');
