@@ -1,5 +1,6 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
+import cors from 'cors';
 
 import { tracksRouter, usersRoutes, artistsRouter } from '@routes/index';
 import { PostgresDataSource } from '@config/db';
@@ -12,6 +13,11 @@ PostgresDataSource.initialize()
     const PORT = 5080;
     const app = express();
 
+    app.use(
+      cors({
+        origin: 'http://localhost:3000',
+      }),
+    );
     app.use(express.json());
     app.use(express.static('static'));
     app.use(fileUpload());

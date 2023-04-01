@@ -9,8 +9,8 @@ const PostgresDataSource = new DataSource({
   password: 'postgres',
   database: 'spotifly',
   logging: true,
-  entities: ['src/models/**/*.ts'],
-  migrations: ['src/migrations/**/*.ts'],
+  entities: ['backend/models/**/*.ts'],
+  migrations: ['backend/migrations/**/*.ts'],
 });
 
 export { PostgresDataSource };
