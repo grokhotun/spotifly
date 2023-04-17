@@ -2,6 +2,7 @@ import React from 'react';
 
 import { TableProps } from './types';
 import { Table as StyledTable, Tr, Td, Th } from './styled';
+import { pick } from '@/shared/utils/pick';
 
 export const Table = <T extends { key: string }>({
   columns,
@@ -33,11 +34,14 @@ export const Table = <T extends { key: string }>({
             <tr key={entity.key}>
               {columns.map((column) => {
                 const value = column.dataIndex
-                  ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    entity[column.dataIndex]
+                  ? pick(entity, column.dataIndex)
                   : null;
-                return <Td key={column.key}>{value}</Td>;
+
+                const content = column.render
+                  ? column.render(value, entity)
+                  : value;
+
+                return <Td key={column.key}>{content}</Td>;
               })}
             </tr>
           );

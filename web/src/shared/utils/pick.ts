@@ -1,3 +1,3 @@
-export const pick = <T>(entity: T, property: keyof T) => {
-  return entity[property];
+export const pick = <R = any>(entity: any, property: string) => {
+  return entity[property] as R;
 };
