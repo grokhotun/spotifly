@@ -1,3 +1,5 @@
-export const pick = <R = any>(entity: any, property: string) => {
+import { GeneralObject } from '@/types';
+
+export const pick = <R extends GeneralObject>(entity: R, property: string) => {
   return entity[property] as R;
 };

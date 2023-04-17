@@ -1,11 +1,16 @@
 import { TracksList } from '@/entites';
-import { Button, Main } from '@/shared/ui';
+import { Box, Button, Input, Main } from '@/shared/ui';
 
 export default function IndexPage() {
   return (
     <Main>
-      <Button>Pause</Button>
-      <TracksList />
+      <Box css={{ padding: '40px' }}>
+        <Box space="sm" display="flex" alignItems="center">
+          <Button>Pause</Button>
+          <Input />
+        </Box>
+        <TracksList />
+      </Box>
     </Main>
   );
 }
