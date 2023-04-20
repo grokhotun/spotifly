@@ -21,7 +21,10 @@ PostgresDataSource.initialize()
     app.use(express.json());
     app.use(express.static('static'));
     app.use(fileUpload());
-    app.use([tracksRouter, usersRoutes, artistsRouter]);
+
+    app.use('/api', tracksRouter);
+    app.use('/api', usersRoutes);
+    app.use('/api', artistsRouter);
 
     app.listen(PORT, () => {
       console.log(`The server has been started on port ${PORT}`);
