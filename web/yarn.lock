@@ -599,6 +599,18 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+effector-react@^22.5.1:
+  version "22.5.1"
+  resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-22.5.1.tgz#09e7ef9a9328edf1ff4f4fcd50b0f4ff98980a52"
+  integrity sha512-Sy5b/sUEZoCuyoCr+SiHcgd0L+PQqnIGx+SuPCZ7MhECYxezkkeecsk0EVj9sykLL2qlEeg+rdiWvIATJgOTeA==
+  dependencies:
+    use-sync-external-store "^1.0.0"
+
+effector@^22.8.1:
+  version "22.8.1"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-22.8.1.tgz#a1bac860262e8d4301d9462d5000973810319def"
+  integrity sha512-368ysZBxxqr0ThVYElhmo8p8rT2wTZ0hF/BIg1FxNPSIdr/wvw4Hbnioy22CbgtU5d53CnadkJnSlKqfOICOwg==
+
 emoji-regex@^9.2.2:
   version "9.2.2"
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
@@ -2119,6 +2131,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-sync-external-store@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
