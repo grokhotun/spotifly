@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { GeneralObject } from './types';
+import { GeneralObject } from '@/types';
 
 const client = axios.create({
-  baseURL: 'http://localhost:5080',
+  baseURL: 'http://localhost:3000',
   headers: {
     Accept: 'application/json',
   },

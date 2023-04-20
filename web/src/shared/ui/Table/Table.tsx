@@ -7,6 +7,7 @@ import { pick } from '@/shared/utils/pick';
 export const Table = <T extends { key: string }>({
   columns,
   data,
+  loading,
 }: TableProps<T>) => {
   return (
     <StyledTable>

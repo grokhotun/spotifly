@@ -11,4 +11,5 @@ export type Column<T = any> = {
 export type TableProps<T extends { key: string }> = {
   columns: Column<T>[];
   data: T[];
+  loading?: boolean;
 };

@@ -1,8 +1,19 @@
 import React from 'react';
 
 import { Table } from '@/shared';
-import { columns, data } from './columns';
+import { columns } from './columns';
+import { useGate, useStore, useStoreMap } from 'effector-react';
+
+import { $tracks, TracksGate, requestTracksFx } from './models';
+import { mapTracksToTableRecord } from './helpers';
 
 export const TracksList = () => {
-  return <Table columns={columns} data={data} />;
+  useGate(TracksGate);
+
+  const loading = useStore(requestTracksFx.pending);
+  const data = useStoreMap($tracks, (tracks) =>
+    mapTracksToTableRecord(tracks || []),
+  );
+
+  return <Table loading={loading} columns={columns} data={data} />;
 };
